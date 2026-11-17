@@ -1,10 +1,20 @@
 # Sumikko Mascot（隅っこキャラ）
 
-**ChatGPT に「作りたいキャラクターの画像 1 枚」と「用意されたプロンプト 1 つ」を渡すだけで、自分だけのデスクトップマスコットが作れます。**
+<p align="center"><strong>ChatGPT に「作りたいキャラクターの画像 1 枚」と「用意されたプロンプト 1 つ」を渡すだけで、自分だけのデスクトップマスコットが作れます。</strong></p>
+<p align="center"><strong>One character picture + one prompt = your own animated desktop mascot.</strong></p>
+
+<p align="center">
+  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue">
+  <img alt="Platform: Windows" src="https://img.shields.io/badge/Platform-Windows-0078D6">
+  <img alt="Runs offline" src="https://img.shields.io/badge/Runs-offline-brightgreen">
+  <a href="https://github.com/sponsors/rotejin"><img alt="Sponsor rotejin" src="https://img.shields.io/badge/Sponsor-rotejin-ea4aaa?logo=githubsponsors&logoColor=white"></a>
+</p>
+
+<p align="center">
+  <img src="characters/koji-chan/preview.gif" alt="工事ちゃんの動作プレビュー" width="440">
+</p>
 
 Windows のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。アプリの中では「隅っこキャラ」という名前で表示されます。
-
-![工事ちゃんの動作プレビュー](characters/koji-chan/preview.gif)
 
 同梱の「ピンクちゃん」と「工事ちゃん」は、どちらも参考画像 1 枚とこのリポジトリの依頼文から作ったキャラクターです。完成図、パーツ画像の生成、位置合わせ、組み込み、動作検査まで AI が行っています。
 
