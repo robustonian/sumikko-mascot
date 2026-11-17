@@ -1,0 +1,30 @@
+# Build outputs and this PC's saved settings.
+/bin/
+
+# Generated render frames and motion previews.
+/preview/
+
+# Local Python environment.
+.venv/
+
+# Local credentials, editor state, caches and temporary files.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+/.vs/
+/.vscode/
+/.idea/
+/.codex/
+/.agents/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+*.bak
+Thumbs.db
+Desktop.ini
+.DS_Store

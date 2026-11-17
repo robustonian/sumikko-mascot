@@ -1,0 +1,39 @@
+{
+  "tool": "built-in image_gen",
+  "character": "工事ちゃん",
+  "approvedKey": "key.png",
+  "keyPrompt": "Reference identity: cobalt blue wavy bob, turquoise eyes, blue diamond hairclip, white short-sleeved T-shirt and orange workwear tied at waist. 2–2.5-head chibi, reproduce assets/parts-reference/panel-1-composite.png desk composition. Closed smile, open eyes, visible neck, compact hair, anime cel shading, transparent background.",
+  "keyPromptNote": "Key prompt summarized; layer/expression prompts below exact.",
+  "layers": [
+    {
+      "name": "base",
+      "prompt": "Precise animation layer extraction from approved illustration. Original FULL CANVAS size 1456x1072, keep exact positions scale perspective and original pixels faithfully; do NOT recenter crop zoom. Transparent background. One layer only, no sheet text or added objects. Reconstruct only hidden areas specified. Clean antialiasing, no shadow or halos. Keep ONLY torso white T-shirt, orange tied workwear, wooden desk and complete keyboard. REMOVE entire head all blue hair, BOTH arms including short sleeves and hands, and mouse. Reconstruct torso under arms with complete shoulders and body outlines. Keep NECK on torso, extend plain skin column upward 70 pixels behind former chin, with no outline at top, collar stays same. Repair continuous desk under mouse and full keyboard keys under removed hand. No arm remnants."
+    },
+    {
+      "name": "keyboard-arm",
+      "prompt": "Precise animation layer extraction from approved illustration. Original FULL CANVAS size 1456x1072, keep exact positions scale perspective and original pixels faithfully; do NOT recenter crop zoom. Transparent background. One layer only, no sheet text or added objects. Reconstruct only hidden areas specified. Clean antialiasing, no shadow or halos. Keep ONLY FAR ARM on right reaching keyboard: white short sleeve, bare forearm and hand together, unchanged original elbow and wrist shape. Remove head torso near arm desk keyboard mouse. Keep no keyboard pixels between fingers. Extend shoulder hidden end 50 pixels into torso with smooth white sleeve material, no thick border at hidden end. Hand and forearm stay one connected original piece."
+    },
+    {
+      "name": "mouse-arm",
+      "prompt": "Precise animation layer extraction from approved illustration. Original FULL CANVAS size 1456x1072, keep exact positions scale perspective and original pixels faithfully; do NOT recenter crop zoom. Transparent background. One layer only, no sheet text or added objects. Reconstruct only hidden areas specified. Clean antialiasing, no shadow or halos. Keep ONLY NEAR ARM at lower left: its white short sleeve, bare arm and hand, plus complete mouse under hand. Remove all other content including head torso workwear desk keyboard far arm. Reconstruct small rounded shoulder hidden under hair inside original torso silhouette. Continuous original dark outer contour. No desk pixels or shadow around mouse."
+    },
+    {
+      "name": "head",
+      "prompt": "Precise animation layer extraction from approved illustration. Original FULL CANVAS size 1456x1072, keep exact positions scale perspective and original pixels faithfully; do NOT recenter crop zoom. Transparent background. One layer only, no sheet text or added objects. Reconstruct only hidden areas specified. Clean antialiasing, no shadow or halos. Keep ONLY complete head: blue bob hair, face, ears, diamond hairclip. REMOVE NECK entirely, torso, clothes, arms, desk mouse keyboard. Close chin/jaw original outline, fill any hidden hair behind neck with same blue hair. Face unchanged, both eyes open small smile closed. Preserve all original features exact position size and linework."
+    }
+  ],
+  "headCorrection": {
+    "prompt": "Extract head from image 1 (approved complete art) on EXACT same full canvas and aspect ratio 1469x1071. Head must remain exact position and size as original: do NOT crop, zoom, rescale or shift. Preserve every visible pixel, contour and face feature. Keep ONLY blue hair, diamond hair clip, face and ears, remove neck at chin outline, all body arms and desk. Complete small hidden hair area behind neck only. Chin bottom near y=568, hair top near y=8, original hair left near x=90 and right near x=855. Output canvas 1469 by 1071, not 1495x1052. Genuine transparency.",
+    "reason": "Rejected first head (1495x1052); replacement is 1469x1071."
+  },
+  "expressions": [
+    {
+      "name": "eyes-closed",
+      "prompt": "Precise expression edit on this isolated head layer. Keep original FULL 1469x1071 transparent canvas. Do not move scale crop or redraw hair face contour accessories skin eyebrows or other features. All non-target pixels must stay identical. Change ONLY both open eyes to peacefully closed curved eyelashes, at natural lower eyelid position, same eye widths and same dark lash style. Remove all iris/white-eye pixels and fill those with matching smooth skin. Mouth stays exactly original closed smile. Hair/bangs and eyebrows unchanged."
+    },
+    {
+      "name": "mouth-open",
+      "prompt": "Precise expression edit on this isolated head layer. Keep original FULL 1469x1071 transparent canvas. Do not move scale crop or redraw hair face contour accessories skin eyebrows or other features. All non-target pixels must stay identical. Change ONLY tiny closed smiling mouth into small happy open mouth. Preserve original mouth's corners and upper-lip smile curve at same pixels, add dark mouth interior and tiny tongue BELOW that curve. Width approximately original 45 pixels, height around 35 pixels, not a huge grin. All eyes and skin outside mouth unchanged. No added teeth."
+    }
+  ]
+}

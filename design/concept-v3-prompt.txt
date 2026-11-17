@@ -1,0 +1,14 @@
+Use case: precise-object-edit.
+Edit target: the supplied approved three-quarter-view illustration of an original chibi girl at a keyboard and mouse.
+Make ONLY these two local corrections; preserve the rest of the image as closely as possible.
+
+1. REMOVE THE VISIBLE CARDIGAN POCKET AND ITS RED TOMATO PATCH:
+The pocket opening and tomato patch currently visible on the front torso above the desk should disappear. Replace that small area with a natural continuation of the cream cable-knit cardigan fabric. The actual lower pockets are below the tabletop and hidden; do not relocate a pocket or patch elsewhere in the visible upper torso. Keep the RED TOMATO HAIR CLIP unchanged.
+
+2. FIX THE KEYBOARD-SIDE SLEEVE, NOT THE MOUSE-SIDE SLEEVE:
+The keyboard arm is the girl's LEFT arm on the image RIGHT, farther from the viewer. Currently its sleeve looks like disconnected inflated lobes / stacked thick hoops beside the bow. Redraw ONLY this sleeve and its shoulder connection into one anatomically coherent, relaxed cloth-covered arm. It must emerge from the far shoulder naturally beneath the hair, slope down through a modest elbow bend, and extend toward the existing hand on the keyboard. Keep the keyboard hand approximately in its current position. Slight foreshortening and perspective make this far sleeve smaller and less bulky than the nearer mouse sleeve.
+Use a single soft, continuous sleeve silhouette with gentle gravity and only a few natural folds. Eliminate the extra upper bulge beside the shoulder and the large concentric ring-like seams encircling the forearm. A simple modest ribbed cuff ends cleanly around the wrist. Cable-knit lines should follow the arm length and fabric curvature, not read as multiple hard circular bands or a segmented tube. No exposed forearm or detached floating sleeve. Retain a cozy oversized cardigan without the excessive balloon shape. The hand still rests naturally on the keys.
+
+INVARIANTS:
+Preserve the approved diagonal camera angle, character facing screen-right, face, expression, golden eyes, beauty mark, charcoal bob, side bun, tomato hair clip, bow, overall body proportions, soft hand-drawn outlines and textures, cream/orange palette, desk perspective, keyboard and mouse, and especially the entire nearer mouse-side arm/sleeve/hand.
+Keep same canvas composition and scale. One illustration only, no annotations or extra items. Preserve genuine background transparency. No checkerboard, text, border, white background or UI.
