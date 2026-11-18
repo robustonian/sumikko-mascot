@@ -1,0 +1,338 @@
+{
+  "act.sleepAfter": {
+    "label": "居眠りまでの時間（秒）",
+    "min": 20.0,
+    "max": 900.0,
+    "default": 120.0,
+    "hint": "何もしない時間がこれだけ続くと眠ります。あくびはその少し前に出ます。"
+  },
+  "act.triumphKeys": {
+    "label": "やりきったに必要な打鍵数",
+    "min": 5.0,
+    "max": 80.0,
+    "default": 20.0,
+    "hint": "Enter の前に続けてこれだけ打っていると「やりきった」になります。"
+  },
+  "act.symbols": {
+    "label": "記号の大きさ",
+    "min": 0.0,
+    "max": 2.0,
+    "default": 1.0,
+    "hint": "zzz・！・ハートなどの記号の大きさの倍率（0 で記号を出しません）。"
+  },
+  "act.thump": {
+    "label": "Enter で机が揺れる大きさ",
+    "min": 0.0,
+    "max": 30.0,
+    "default": 10.0,
+    "hint": "Enter を叩いた瞬間に、絵全体が沈んで跳ね返る距離（0 で揺れません）。"
+  },
+  "key.height": {
+    "label": "振り上げの高さ",
+    "min": 0.0,
+    "max": 120.0,
+    "default": 44.0,
+    "hint": "続けて打つ時に手を振り上げる高さ。"
+  },
+  "key.heightSlow": {
+    "label": "ゆっくり打つ時の上乗せ",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 34.0,
+    "hint": "間を空けて1つだけ打つ時に、さらに高く振り上げる分。"
+  },
+  "key.hopLift": {
+    "label": "遠くへ跳ぶ時の上乗せ",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.25,
+    "hint": "次に叩く場所が遠いほど、高い弧を描く度合い。"
+  },
+  "key.maxHeight": {
+    "label": "高さの上限",
+    "min": 60.0,
+    "max": 180.0,
+    "default": 120.0,
+    "hint": "どれだけ重なっても、これより高くは振り上げません。"
+  },
+  "key.accent": {
+    "label": "Enter の振りの倍率",
+    "min": 1.0,
+    "max": 2.5,
+    "default": 1.5,
+    "hint": "Enter を叩く時に、振り上げを何倍にするか。"
+  },
+  "key.hover": {
+    "label": "打つ合間に浮かせる高さ",
+    "min": 0.0,
+    "max": 60.0,
+    "default": 24.0,
+    "hint": "次の打鍵を待つあいだ、手をキーから浮かせておく高さ。"
+  },
+  "key.press": {
+    "label": "押し込みの深さ",
+    "min": 0.0,
+    "max": 20.0,
+    "default": 6.0,
+    "hint": "叩いた瞬間にキーへ沈み込む深さ。"
+  },
+  "key.rebound": {
+    "label": "跳ね返りの強さ",
+    "min": 0.0,
+    "max": 1.2,
+    "default": 0.55,
+    "hint": "叩いた直後に手が跳ね上がる勢い。"
+  },
+  "key.apart": {
+    "label": "叩く場所を離す距離",
+    "min": 0.0,
+    "max": 120.0,
+    "default": 60.0,
+    "hint": "次に叩く場所を、直前の場所から最低これだけ離します。"
+  },
+  "key.swell": {
+    "label": "振り上げた手の拡大",
+    "min": 0.0,
+    "max": 0.8,
+    "default": 0.3,
+    "hint": "手が上がるほど大きく見せる度合い（0 で拡大なし）。"
+  },
+  "key.splat": {
+    "label": "着地の横つぶれ",
+    "min": 0.0,
+    "max": 0.5,
+    "default": 0.16,
+    "hint": "叩きつけた瞬間に手が横へつぶれる度合い。"
+  },
+  "key.flick": {
+    "label": "手首のしなり",
+    "min": 0.0,
+    "max": 0.03,
+    "default": 0.011,
+    "hint": "手の上下の速さに対して、手首が遅れて返る度合い。"
+  },
+  "key.flickMax": {
+    "label": "手首のしなりの上限（度）",
+    "min": 0.0,
+    "max": 26.0,
+    "default": 19.0,
+    "hint": "手首が返る角度の上限。"
+  },
+  "key.holdHeight": {
+    "label": "長押し連打の高さ",
+    "min": 10.0,
+    "max": 80.0,
+    "default": 30.0,
+    "hint": "キーを押し続けた時の、細かい連打の高さ。"
+  },
+  "key.linger": {
+    "label": "手を戻すまでの待ち（秒）",
+    "min": 0.2,
+    "max": 2.0,
+    "default": 0.65,
+    "hint": "最後の打鍵から、手が元の位置へ帰り始めるまでの時間。"
+  },
+  "mouse.follow": {
+    "label": "追いかける速さ",
+    "min": 6.0,
+    "max": 45.0,
+    "default": 22.0,
+    "hint": "ポインターの動きに手が追いつく速さ。"
+  },
+  "mouse.damping": {
+    "label": "行き過ぎの少なさ",
+    "min": 0.3,
+    "max": 1.2,
+    "default": 0.62,
+    "hint": "小さいほど勢い余って行き過ぎ、1 以上では行き過ぎません。"
+  },
+  "mouse.lean": {
+    "label": "横移動での傾きやすさ",
+    "min": 0.0,
+    "max": 0.0004,
+    "default": 0.00012,
+    "hint": "素早く横へ動かした時に、マウスと手が遅れて傾く度合い。"
+  },
+  "mouse.leanMax": {
+    "label": "傾きの上限",
+    "min": 0.0,
+    "max": 0.25,
+    "default": 0.11,
+    "hint": "マウスと手が傾く大きさの上限。"
+  },
+  "mouse.squash": {
+    "label": "クリックのつぶれ",
+    "min": 0.0,
+    "max": 0.3,
+    "default": 0.11,
+    "hint": "クリックで手元が縦につぶれる度合い。"
+  },
+  "mouse.clickSink": {
+    "label": "クリックの沈み",
+    "min": 0.0,
+    "max": 30.0,
+    "default": 14.0,
+    "hint": "クリックで手元が下がる距離。"
+  },
+  "mouse.drift": {
+    "label": "待機中の揺れ",
+    "min": 0.0,
+    "max": 4.0,
+    "default": 1.0,
+    "hint": "動かしていない間の、手元のゆっくりした揺れの倍率。"
+  },
+  "mouse.clickLines": {
+    "label": "クリックの線の長さ",
+    "min": 0.0,
+    "max": 2.5,
+    "default": 1.0,
+    "hint": "クリックで飛び出す線の長さの倍率（0 で線を出しません）。"
+  },
+  "head.dip": {
+    "label": "打鍵での沈み",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 4.8,
+    "hint": "キーを叩くたびに頭が沈む距離。"
+  },
+  "head.dipTilt": {
+    "label": "打鍵での傾き（度）",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 0.8,
+    "hint": "キーを叩くたびに頭が傾く角度。"
+  },
+  "head.accent": {
+    "label": "Enter の衝撃の倍率",
+    "min": 1.0,
+    "max": 3.0,
+    "default": 1.8,
+    "hint": "Enter の着地の強さ。頭の沈みと手のつぶれの両方に効きます。"
+  },
+  "head.clickDip": {
+    "label": "クリックでの沈み",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 3.0,
+    "hint": "クリックで頭が沈む距離。"
+  },
+  "head.pointerLean": {
+    "label": "ポインター側への傾き（度）",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 0.9,
+    "hint": "ポインターが画面の端にある時、そちらへ頭を傾ける角度。"
+  },
+  "head.sway": {
+    "label": "待機中の揺れ",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "hint": "何もしていない間の、頭のゆっくりした揺れの倍率。"
+  },
+  "head.breath": {
+    "label": "呼吸の上下",
+    "min": 0.0,
+    "max": 8.0,
+    "default": 3.2,
+    "hint": "呼吸に合わせて頭が上下する幅。"
+  },
+  "head.tiltSize": {
+    "label": "首かしげの大きさ",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "hint": "ときどき首をかしげる角度の倍率。"
+  },
+  "head.tiltEvery": {
+    "label": "首かしげの間隔",
+    "min": 0.2,
+    "max": 3.0,
+    "default": 1.0,
+    "hint": "首をかしげる間隔の倍率（小さいほど頻繁）。"
+  },
+  "hair.ahoge": {
+    "label": "アホ毛の揺れ",
+    "min": 0.0,
+    "max": 2.5,
+    "default": 1.0,
+    "hint": "頭の動きに遅れて、アホ毛がしなって揺れる大きさ（0 で揺れません）。"
+  },
+  "blink.every": {
+    "label": "まばたきの間隔",
+    "min": 0.3,
+    "max": 3.0,
+    "default": 1.0,
+    "hint": "まばたきの間隔の倍率（小さいほど頻繁）。"
+  },
+  "blink.double": {
+    "label": "2回続く割合",
+    "min": 0.0,
+    "max": 0.8,
+    "default": 0.2,
+    "hint": "まばたきが2回続けて起きる割合。"
+  },
+  "blink.slowness": {
+    "label": "まばたきの遅さ",
+    "min": 0.5,
+    "max": 2.5,
+    "default": 1.0,
+    "hint": "まぶたが閉じて開くまでの時間の倍率。"
+  },
+  "mouth.purseTyping": {
+    "label": "打鍵中の口のすぼめ",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.7,
+    "hint": "キーを打っている間、口元をすぼめる強さ。"
+  },
+  "mouth.purseEvery": {
+    "label": "待機中に口をすぼめる間隔",
+    "min": 0.3,
+    "max": 3.0,
+    "default": 1.0,
+    "hint": "何もしていない間に口元をすぼめる間隔の倍率。"
+  },
+  "act.greet": {
+    "label": "あいさつ",
+    "min": 0,
+    "max": 1,
+    "default": 1,
+    "hint": "起動した時と、隠した状態から戻った時に、笑顔で手を振ります。"
+  },
+  "act.sleep": {
+    "label": "居眠り",
+    "min": 0,
+    "max": 1,
+    "default": 1,
+    "hint": "しばらく何もしないと、あくびをして眠ります。キーやクリックでびくっと起き、マウスをそっと動かすと静かに起きます。"
+  },
+  "act.triumph": {
+    "label": "やりきった",
+    "min": 0,
+    "max": 1,
+    "default": 1,
+    "hint": "長く打ったあとの Enter で、手を掲げて笑顔になります。"
+  },
+  "act.pet": {
+    "label": "なでなで",
+    "min": 0,
+    "max": 1,
+    "default": 1,
+    "hint": "頭の上でポインターを左右に往復させると、目を細めて喜びます。"
+  },
+  "act.think": {
+    "label": "考え中",
+    "min": 0,
+    "max": 1,
+    "default": 1,
+    "hint": "打つ手が止まると、ときどき首をかしげて指でトントンします。"
+  },
+  "act.sweat": {
+    "label": "必死の汗",
+    "min": 0,
+    "max": 1,
+    "default": 1,
+    "hint": "とても速い打鍵が続くと、汗が飛びます。"
+  }
+}

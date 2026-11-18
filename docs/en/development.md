@@ -1,5 +1,7 @@
 # Development
 
+The Linux host is in `linux/` (Python 3 + PyQt5), launched by `./Start.sh`. `./verify.sh` runs 39 Linux regression tests, three character startup checks and preview exports. The existing Windows checks below are unchanged. See the [Linux guide (Japanese)](../linux.md) for setup, input permissions and platform differences.
+
 [Back to the top](../../README.en.md) · [日本語](../development.md)
 
 | Path | Contents |

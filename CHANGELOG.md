@@ -3,6 +3,13 @@
 このプロジェクトの主な変更を記録します。
 All notable changes to this project are recorded here.
 
+## [Unreleased]
+
+- Linux版（Python 3 + PyQt5）を追加。`Start.sh` から起動し、既存の画像とキャラクター設定を使います。キー入力・マウス・口パク、透過表示、キャラクターの切り替え、動きの調整に対応。
+- Linuxの設定は `bin/linux/` に分離。Ubuntu / GNOME / WaylandではXWayland経由で表示し、読み取り権限のある入力機器から操作を受け取ります。
+- `verify.sh` にLinux用39項目の回帰検査、同梱3キャラの起動検査とプレビュー出力を追加。CIにLinuxの検証を追加。
+- Added a Linux desktop host (Python 3 + PyQt5), a separate settings store, regression checks and CI. See `docs/linux.md` for input permissions and differences from Windows.
+
 ## [0.1.1] - 2026-11-18
 
 文書だけの更新です。アプリの動作は v0.1.0 と同じです。 / Documentation-only update; the app itself is unchanged.
