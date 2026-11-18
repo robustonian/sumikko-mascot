@@ -7,7 +7,7 @@
 | `build.ps1` | `bin/SumikkoCompanion.exe` をビルド（実行中のアプリは終了してから） |
 | `verify.ps1` | 本体のコンパイル、回帰検査 298 項目、プレビュー静止画の書き出し。アプリの起動中でも実行できる |
 | `Start.sh` / `linux/` | Python 3 + PyQt5 のLinuxデスクトップ版。PNGと座標設定はWindows版と共用 |
-| `verify.sh` | Linux版の回帰検査 39 項目、同梱3キャラクターの起動検査、プレビュー静止画の書き出し |
+| `verify.sh` | Linux版の回帰検査 41 項目、同梱3キャラクターの起動検査、プレビュー静止画の書き出し |
 | `app/` | アプリ本体と検査のソース |
 | `assets/` | 見本のキャラクターの透過 PNG 5 枚と、その絵に合わせた数値 `character.txt`（[assets/README.md](../assets/README.md)） |
 | `characters/` | 追加したキャラクター。1 人につき 1 フォルダ（PNG 5 枚と `character.txt`） |

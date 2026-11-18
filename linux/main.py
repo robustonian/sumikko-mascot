@@ -1,5 +1,6 @@
 """Transparent desktop window, menus, tray, lifecycle and preview exports."""
 import argparse
+import ctypes
 import fcntl
 import hashlib
 import os
@@ -14,7 +15,7 @@ from PyQt5.QtGui import QCursor, QIcon, QPainter, QPixmap
 from PyQt5.QtNetwork import QLocalServer, QLocalSocket
 from PyQt5.QtWidgets import (QActionGroup, QApplication, QCheckBox, QDialog,
                             QDialogButtonBox, QDoubleSpinBox, QFormLayout,
-                            QMenu, QMessageBox, QScrollArea, QSystemTrayIcon,
+                            QMenu, QMessageBox, QOpenGLWidget, QScrollArea, QSystemTrayIcon,
                             QVBoxLayout, QWidget)
 
 from .character import Character
@@ -64,7 +65,9 @@ class SingleInstance:
         self.file.close()
 
 
-class CompanionWindow(QWidget):
+class CompanionControls:
+    renderer = 'CPU (Qt Raster)'
+
     def __init__(self, args, settings, entries=None, input_signals=None):
         super().__init__(None, Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowDoesNotAcceptFocus)
         self.args, self.settings = args, settings
@@ -136,8 +139,7 @@ class CompanionWindow(QWidget):
         character.gain = self.settings.number('gain', 1., .2, 8)
         character.floor = self.settings.number('floor', .015, 0, .15)
         self.character, self.character_id = character, entry.id
-        crop = entry.profile['trayIcon']
-        icon = QIcon(QPixmap.fromImage(character.images['head'].copy(*[round(v) for v in (crop[0], crop[1], crop[2], crop[2])]).scaled(64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation)))
+        icon = QIcon(QPixmap.fromImage(character.tray_image))
         self.setWindowIcon(icon)
         self.tray.setIcon(icon)
         self.update()
@@ -210,13 +212,14 @@ class CompanionWindow(QWidget):
                 self.update()
         self.local_key = self.local_accent = self.local_repeat = False
 
-    def paintEvent(self, event):
+    def draw_character(self):
         painter = QPainter(self)
         painter.setCompositionMode(QPainter.CompositionMode_Source)
         painter.fillRect(self.rect(), Qt.transparent)
         painter.setCompositionMode(QPainter.CompositionMode_SourceOver)
         painter.scale(self.width() / WIDTH, self.width() / WIDTH)
         self.character.draw(painter)
+        painter.end()
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -323,7 +326,7 @@ class CompanionWindow(QWidget):
 
     def status_dialog(self):
         QMessageBox.information(self, '入力・音声の状態', self.inputs.status + '\n\n' + self.audio.status +
-                                '\n\n表示: Qt / ' + QApplication.platformName() +
+                                '\n\n表示: Qt / ' + QApplication.platformName() + ' / ' + self.renderer +
                                 '\n設定: ' + str(self.settings.path) +
                                 '\n\n再度 Start.sh を実行すると、隠したキャラを表示できます。')
 
@@ -432,18 +435,65 @@ class CompanionWindow(QWidget):
         except OSError as exc:
             print('設定を保存できません: ' + str(exc), file=sys.stderr)
 
-    def closeEvent(self, event):
+    def release_resources(self, save):
         if not self.cleaned:
             for dialog in self.dialogs[:]:
                 dialog.close()
             self.timer.stop()
-            self.save_settings()
+            if save:
+                self.save_settings()
             self.audio.close()
             self.inputs.close()
             self.tray.hide()
             self.cleaned = True
+
+    def closeEvent(self, event):
+        self.release_resources(save=True)
         event.accept()
         QApplication.instance().quit()
+
+
+class CompanionWindow(CompanionControls, QWidget):
+    def paintEvent(self, event):
+        self.draw_character()
+
+
+class OpenGLCompanionWindow(CompanionControls, QOpenGLWidget):
+    renderer = 'GPU (Qt OpenGL)'
+
+    def paintGL(self):
+        self.draw_character()
+
+    def hardware_available(self):
+        # Exercise the real widget's context and framebuffer before showing it.
+        frame = self.grabFramebuffer()
+        if frame.isNull() or not frame.hasAlphaChannel() or not self.isValid():
+            return False
+        self.makeCurrent()
+        try:
+            address = self.context().getProcAddress(b'glGetString')
+            if not address:
+                return False
+            get_string = ctypes.CFUNCTYPE(ctypes.c_char_p, ctypes.c_uint)(int(address))
+            renderer = (get_string(0x1F01) or b'').lower()  # GL_RENDERER
+            software = (b'llvmpipe', b'softpipe', b'swrast', b'software', b'swiftshader', b'lavapipe')
+            return bool(renderer) and not any(name in renderer for name in software)
+        finally:
+            self.doneCurrent()
+
+
+def create_window(args, settings):
+    if args.renderer == 'auto' and QApplication.platformName() not in ('minimal', 'offscreen'):
+        window = OpenGLCompanionWindow(args, settings)
+        fmt = window.format()
+        fmt.setAlphaBufferSize(8)
+        window.setFormat(fmt)
+        if window.hardware_available():
+            return window
+        window.release_resources(save=False)
+        window.hide()
+        window.deleteLater()
+    return CompanionWindow(args, settings)
 
 
 def export_previews(directory, entry):
@@ -476,6 +526,8 @@ def export_previews(directory, entry):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='隅っこキャラ — Linuxデスクトップ版')
+    parser.add_argument('--renderer', choices=('auto', 'cpu'), default='auto',
+                        help='描画方式（自動選択 / CPU固定）')
     parser.add_argument('--demo', action='store_true', help='入力なしで動きを試す')
     parser.add_argument('--smoke-test', action='store_true', help='3秒表示して終了（設定は保存しない）')
     parser.add_argument('--character', help='characters/ のフォルダ名。空文字は見本')
@@ -508,9 +560,10 @@ def main(argv=None):
         settings = Settings(settings_dir)
         if settings.problem:
             print(settings.problem, file=sys.stderr)
-        window = CompanionWindow(args, settings)
+        window = create_window(args, settings)
         instance.listen(window.show_companion)
         window.show()
+        print('描画: ' + window.renderer, flush=True)
         print(window.inputs.status, flush=True)
         if args.preview_dir:
             entry = next(e for e in window.entries if e.id == window.character_id)

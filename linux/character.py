@@ -119,6 +119,12 @@ class Character:
             self.hair_tip_clip = polygon(adjusted)
         self.prepare_pieces()
         self.closed_patches = {key: self.eye_patch(self.regions[key]) for key in ('leftEye', 'rightEye')}
+        x, y, size = map(round, profile['trayIcon'])
+        self.tray_image = self.images['head'].copy(x, y, size, size).scaled(
+            64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.images.clear()  # patches and full-size pixmaps now own their pixels
+        self.backgrounds = {}
+        self.background_scale = None
         for name in ('rx', 'ry', 'lift', 'flick', 'nod', 'mx', 'my', 'press', 'lean',
                      'hx', 'hy', 'angle', 'purse', 'thump', 'hair_sway', 'hair_stretch', 'hair_tip'):
             setattr(self, name, Spring())
@@ -158,7 +164,8 @@ class Character:
         # Clip registered parts only once, at native resolution. Re-rasterizing
         # large polygon clips on each desktop frame was the main idle CPU cost.
         self.cached_pieces = {}
-        self.pixmaps = {name: QPixmap.fromImage(image) for name, image in self.images.items()}
+        self.pixmaps = {name: QPixmap.fromImage(image) for name, image in self.images.items()
+                        if name in ('base', 'key', 'head')}
         bounds = {name: QRegion(QBitmap.fromImage(image.createAlphaMask())).boundingRect()
                   for name, image in self.images.items()}
         parts = [('base', self.regions['collar']), ('key', self.key_root),
@@ -173,6 +180,10 @@ class Character:
                 continue
             box = clip.boundingRect().toAlignedRect().intersected(bounds[name])
             if box.isEmpty():
+                # A faint custom layer can disappear from the binary alpha mask.
+                # Preserve the original clipped rendering in that case.
+                if name not in self.pixmaps:
+                    self.pixmaps[name] = QPixmap.fromImage(self.images[name])
                 continue
             image = QImage(box.size(), QImage.Format_ARGB32_Premultiplied)
             image.fill(Qt.transparent)
@@ -453,6 +464,9 @@ class Character:
             painter.setTransform(transform, True)
         painter.setOpacity(painter.opacity() * opacity)
         cached = self.cached_pieces.get((name, id(clip))) if clip is not None else None
+        if clip is not None and clip.isEmpty():
+            painter.restore()
+            return
         if cached:
             _, box, pixmap = cached
             painter.drawPixmap(QPointF(box.x(), box.y()), pixmap)
@@ -464,9 +478,6 @@ class Character:
 
     def draw_key(self, painter):
         x, y, turn = self.rx.value, self.ry.value - self.lift.value, self.flick.value
-        if abs(x) + abs(y) + abs(turn) < .00001:
-            self.piece(painter, 'key')
-            return
         p, t = self.profile, self.tune
         self.piece(painter, 'key', self.key_root)
         gx, gy = x / p['keyForearm'][0], y / p['keyForearm'][0]
@@ -556,21 +567,57 @@ class Character:
             flap = QTransform(1, -self.hair_tip.value, 0, 1, 0, tip[0] * self.hair_tip.value)
             self.piece(painter, 'head', self.hair_tip_clip, flap * lean)
 
+    def draw_background(self, painter, resting):
+        self.piece(painter, 'base')
+        if resting:
+            self.piece(painter, 'key')
+            if self.profile['collar']:
+                self.piece(painter, 'base', self.regions['collar'])
+            self.piece(painter, 'mouse', self.shoulder_clip)
+
+    def paint_background(self, painter, resting):
+        # Cache only at the exact device-pixel scale. Fractional body motion
+        # and other transforms must sample the original art on each frame.
+        transform = painter.deviceTransform()
+        scale = transform.m11()
+        if (transform.type() > QTransform.TxScale or scale <= 0 or
+                transform.m22() != scale or transform.dx() or transform.dy()):
+            self.draw_background(painter, resting)
+            return
+        if scale != self.background_scale:
+            self.backgrounds.clear()
+            self.background_scale = scale
+        if resting not in self.backgrounds:
+            layer = QPixmap(math.ceil(WIDTH * scale), math.ceil(HEIGHT * scale))
+            layer.fill(Qt.transparent)
+            brush = QPainter(layer)
+            brush.setRenderHints(painter.renderHints())
+            brush.scale(scale, scale)
+            self.draw_background(brush, resting)
+            brush.end()
+            self.backgrounds[resting] = layer
+        painter.save()
+        painter.scale(1 / scale, 1 / scale)
+        painter.drawPixmap(0, 0, self.backgrounds[resting])
+        painter.restore()
+
     def draw(self, painter):
         p, t = self.profile, self.tune
         painter.save()
         painter.setRenderHints(QPainter.Antialiasing | QPainter.SmoothPixmapTransform)
         painter.setClipRect(ART, Qt.IntersectClip)
         painter.translate(0, max(0, self.thump.value))
-        self.piece(painter, 'base')
-        self.draw_key(painter)
-        if p['collar']:
-            self.piece(painter, 'base', self.regions['collar'])
+        resting = abs(self.rx.value) + abs(self.ry.value - self.lift.value) + abs(self.flick.value) < .00001
+        self.paint_background(painter, resting)
+        if not resting:
+            self.draw_key(painter)
+            if p['collar']:
+                self.piece(painter, 'base', self.regions['collar'])
+            self.piece(painter, 'mouse', self.shoulder_clip)
         dx, dy = self.mouse_dx, self.mouse_dy
         shoulder, wrist = p['mouseShoulderY'][0], p['mouseWristY'][0]
         reach = wrist - shoulder
         deform = QTransform(1, 0, dx / reach, 1 + dy / reach, -shoulder * dx / reach, -shoulder * dy / reach)
-        self.piece(painter, 'mouse', self.shoulder_clip)
         self.piece(painter, 'mouse', self.sleeve_clip, deform)
         points = p['mouseShoulderLine']
         if points:

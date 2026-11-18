@@ -15,7 +15,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QCheckBox, QDoubleSpinBox
 
 from linux.character import Character, Spring
-from linux.main import CompanionWindow, SingleInstance
+from linux.main import CompanionWindow, SingleInstance, create_window
 from linux.profile import ROOT, EXACT, POINTS, Profile, TUNING, assignments, catalog, mouse_range
 from linux.settings import Settings
 from linux.signals import AudioLevel, EVENT, InputSignals
@@ -181,6 +181,12 @@ class MotionChecks(unittest.TestCase):
                 char = Character(entry.profile, seed=1)
                 char.wave_start = -100
                 rest = char.frame(320)
+                # Compare against the original compositing path, including after
+                # changing the cache size and returning to a previously used size.
+                for width in (320, 560, 320):
+                    cached = char.frame(width)
+                    with patch.object(char, 'paint_background', char.draw_background):
+                        self.assertEqual(cached, char.frame(width))
                 self.assertEqual(rest.pixelColor(319, 0).alpha(), 0)
                 self.assertTrue(any(rest.pixelColor(x, y).alpha() for x in range(0, 320, 20) for y in range(0, 230, 20)))
                 for frame in range(25):
@@ -329,6 +335,28 @@ class SettingsChecks(unittest.TestCase):
             settings = Settings(directory)
             self.assertTrue(settings.problem)
             self.assertEqual(settings.data, {})
+
+
+class RendererChecks(unittest.TestCase):
+    @patch('linux.main.CompanionWindow')
+    @patch('linux.main.OpenGLCompanionWindow')
+    @patch.object(QApplication, 'platformName', return_value='xcb')
+    def test_auto_selection(self, platform, opengl, raster):
+        args, settings = argparse.Namespace(renderer='auto'), Mock()
+        candidate = opengl.return_value
+        candidate.hardware_available.return_value = True
+        self.assertIs(create_window(args, settings), candidate)
+        raster.assert_not_called()
+        candidate.hardware_available.return_value = False
+        self.assertIs(create_window(args, settings), raster.return_value)
+        candidate.release_resources.assert_called_once_with(save=False)
+        candidate.deleteLater.assert_called_once_with()
+
+    @patch('linux.main.CompanionWindow')
+    @patch('linux.main.OpenGLCompanionWindow')
+    def test_cpu_override_skips_opengl(self, opengl, raster):
+        self.assertIs(create_window(argparse.Namespace(renderer='cpu'), Mock()), raster.return_value)
+        opengl.assert_not_called()
 
 
 class WindowChecks(unittest.TestCase):

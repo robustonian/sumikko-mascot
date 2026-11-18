@@ -31,6 +31,8 @@ Windows・Linux のデスクトップの隅っこで、あなたのキー入力�
 | Windows | `Start.cmd` をダブルクリック。初回は自動でビルドします | .NET Framework 4.x。Windows 11 で確認済み |
 | Linux | 端末でプロジェクトのフォルダを開き、`./Start.sh` を実行 | Python 3 と PyQt5。X11 または Wayland（位置指定には XWayland を使用） |
 
+Linux版は起動時にGPUによるOpenGL描画とCPU描画を自動で選びます。専用のグラフィックボードは不要です。
+
 キャラを右クリックすると、キャラクターの切り替え、表示サイズ、音声、終了を選べます。Linuxで必要なパッケージと入力権限は [Linuxで使う](docs/linux.md)、Windowsの操作は [Windows版の使い方](docs/usage.md) にまとめています。
 
 ## 3 ステップで自分のマスコットを作る
