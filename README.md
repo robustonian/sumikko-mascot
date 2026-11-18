@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="characters/koji-chan/preview.gif" alt="工事ちゃんの動作プレビュー" width="440">
+  <img src="docs/media/tomari-typing.gif" alt="キー入力に合わせてキーボードを叩く妹尾トマリ（トレイラーより）" width="720">
 </p>
 
 Windows のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。アプリの中では「隅っこキャラ」という名前で表示されます。

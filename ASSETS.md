@@ -20,8 +20,9 @@
 | 妹尾トマリ（見本） | `assets/`（`assets/parts-reference/` の参考シートを含む）、`design/` |
 | ピンクちゃん | `characters/pink-chan/` |
 | 工事ちゃん | `characters/koji-chan/` |
+| 紹介用（3 人とも） | `docs/media/`、リリースに添付したトレイラー動画 |
 
-これらの場所にある PNG・GIF（完成図、パーツ、参考シート、プレビュー）が対象です。
+これらの場所にある PNG・GIF・動画（完成図、パーツ、参考シート、プレビュー、トレイラー）が対象です。トレイラーの映像や音楽を取り出して使うこともできません。
 
 ## してよいこと
 
@@ -66,7 +67,7 @@
 
 ## English
 
-The source code, scripts and documents are MIT-licensed. **The character images are not.** They are © 2026 ろてじん (Rotejin). 妹尾トマリ (Tomari, the sample character in `assets/` and `design/`), Pink-chan (`characters/pink-chan/`) and Koji-chan (`characters/koji-chan/`) are all original characters by Rotejin. This project is meant for making a desktop mascot of **your own** character; the bundled characters are samples for trying the app.
+The source code, scripts and documents are MIT-licensed. **The character images are not.** They are © 2026 ろてじん (Rotejin). 妹尾トマリ (Tomari, the sample character in `assets/` and `design/`), Pink-chan (`characters/pink-chan/`) and Koji-chan (`characters/koji-chan/`) are all original characters by Rotejin. The promotional media in `docs/media/` and the trailer attached to releases (including its music) are covered by these terms too. This project is meant for making a desktop mascot of **your own** character; the bundled characters are samples for trying the app.
 
 You may:
 
