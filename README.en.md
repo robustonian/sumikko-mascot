@@ -55,6 +55,12 @@ Double-click `Start.cmd`. On the first run it builds the app with the C# compile
 
 Right-click the mascot to switch characters and to change the size, the audio and the motion settings. **終了** (Quit) is in the same menu. See the [usage guide](docs/en/usage.md) for details.
 
+## Trailer
+
+A 57-second introduction (with sound; captions in Japanese).
+
+https://github.com/user-attachments/assets/f4ac66c1-2760-4643-8265-25f2bc6cb0da
+
 ## What it does
 
 - Its hand hits the keyboard when you press a key, and its other hand follows your mouse.
