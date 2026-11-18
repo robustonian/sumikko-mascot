@@ -10,13 +10,14 @@
   <img alt="Platform: Windows" src="https://img.shields.io/badge/Platform-Windows-0078D6">
   <img alt="Runs offline" src="https://img.shields.io/badge/Runs-offline-brightgreen">
   <a href="https://github.com/sponsors/rotejin"><img alt="Sponsor rotejin" src="https://img.shields.io/badge/Sponsor-rotejin-ea4aaa?logo=githubsponsors&logoColor=white"></a>
+  <a href="https://x.com/rotejin"><img alt="X: @rotejin" src="https://img.shields.io/badge/X-%40rotejin-000000?logo=x&logoColor=white"></a>
 </p>
 
 <p align="center">
   <img src="docs/media/tomari-typing.gif" alt="Tomari typing on her keyboard as you type (from the trailer)" width="720">
 </p>
 
-Sumikko Mascot is a little character that sits in a corner of your Windows desktop. It types on its keyboard when you type and moves its mouse when you move yours. No Live2D or PSD rig is involved: it runs on five transparent PNG images and drawing code. Inside the app it is called 隅っこキャラ (*Sumikko Kyara*, "the corner character").
+Sumikko Mascot is a little character that sits in a corner of your Windows desktop. It types on its keyboard when you type and moves its mouse when you move yours. No Live2D or PSD rig is involved: it runs on five transparent PNG images and drawing code. Its Japanese name is 隅っこキャラ (*Sumikko Kyara*, "the corner character"), which is also the name shown in the app.
 
 The bundled Pink-chan and Koji-chan were each made from a single reference picture and the prompt in this repository. The AI did all of it: the key illustration, the layered parts, the measurements, adding them to the app and checking the motion.
 
@@ -133,6 +134,8 @@ Quit the app (right-click → **終了**) and delete the folder. Settings are st
 ## Questions and bug reports
 
 Open an [issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) and pick a template. [SUPPORT.md](.github/SUPPORT.md) lists what to include. Do not post vulnerabilities in public issues; follow [SECURITY.md](.github/SECURITY.md). Questions in English are welcome.
+
+For anything else, contact the author on X: [@rotejin](https://x.com/rotejin).
 
 ## Privacy
 

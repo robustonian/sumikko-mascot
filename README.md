@@ -11,13 +11,14 @@
   <img alt="Platform: Windows" src="https://img.shields.io/badge/Platform-Windows-0078D6">
   <img alt="Runs offline" src="https://img.shields.io/badge/Runs-offline-brightgreen">
   <a href="https://github.com/sponsors/rotejin"><img alt="Sponsor rotejin" src="https://img.shields.io/badge/Sponsor-rotejin-ea4aaa?logo=githubsponsors&logoColor=white"></a>
+  <a href="https://x.com/rotejin"><img alt="X: @rotejin" src="https://img.shields.io/badge/X-%40rotejin-000000?logo=x&logoColor=white"></a>
 </p>
 
 <p align="center">
   <img src="docs/media/tomari-typing.gif" alt="キー入力に合わせてキーボードを叩く妹尾トマリ（トレイラーより）" width="720">
 </p>
 
-Windows のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。アプリの中では「隅っこキャラ」という名前で表示されます。
+Windows のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。日本語名は「隅っこキャラ」で、アプリの中でもこの名前で表示されます。
 
 同梱の「ピンクちゃん」と「工事ちゃん」は、どちらも参考画像 1 枚とこのリポジトリの依頼文から作ったキャラクターです。完成図、パーツ画像の生成、位置合わせ、組み込み、動作検査まで AI が行っています。
 
@@ -133,13 +134,15 @@ https://github.com/user-attachments/assets/f4ac66c1-2760-4643-8265-25f2bc6cb0da
 
 [Issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) から、テンプレートを選んで書いてください。書いてほしいことは [SUPPORT.md](.github/SUPPORT.md) にあります。脆弱性は公開の Issue に書かず、[SECURITY.md](.github/SECURITY.md) の方法で報告してください。
 
+そのほかの作者への連絡は、X（[@rotejin](https://x.com/rotejin)）へどうぞ。
+
 ## プライバシー
 
 入力はキャラの反応のためだけに使い、入力した文字や音声は記録しません。音声は音量だけを取得します。ネットワーク通信は行いません。位置・表示・音声デバイスなどの設定は、手元の `bin/` フォルダに保存します。
 
 ## 名前について
 
-Sumikko（すみっこ）は日本語で「隅っこ」という意味です。画面の隅っこにいる相棒、という意味で名付けました。サンエックスの「すみっコぐらし」とは関係ありません。また、OpenAI の公式ツールではありません。
+Sumikko（すみっこ）は日本語で「隅っこ」という意味です。画面の隅っこにいる相棒、という意味で名付けました。日本語名は「隅っこキャラ」です。サンエックスの「すみっコぐらし」とは関係ありません。また、OpenAI の公式ツールではありません。
 
 ## ライセンス
 

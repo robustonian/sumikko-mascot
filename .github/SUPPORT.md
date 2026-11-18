@@ -18,6 +18,10 @@
 
 脆弱性は Issue に書かず、[セキュリティポリシー](SECURITY.md) の方法で報告してください。
 
+## 作者への連絡
+
+Issue に合わない連絡は、作者の X（[@rotejin](https://x.com/rotejin)）へどうぞ。不具合や質問は、同じことで困った人も見られるように、なるべく Issue にお願いします。
+
 ## 書いてほしいこと
 
 - Windows のバージョン（例: Windows 11 24H2。設定 → システム → バージョン情報 で確認できます）
@@ -36,4 +40,4 @@ Issue は誰でも見られます。スクリーンショットやファイル�
 
 ## English
 
-Support is best-effort. Please check [Troubleshooting](../README.en.md#troubleshooting) in the English README and the [usage guide](../docs/en/usage.md) first, then open an [issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) with your Windows version, display scaling, the character you used and the steps to reproduce. Questions in English are welcome. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+Support is best-effort. Please check [Troubleshooting](../README.en.md#troubleshooting) in the English README and the [usage guide](../docs/en/usage.md) first, then open an [issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) with your Windows version, display scaling, the character you used and the steps to reproduce. Questions in English are welcome. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md). For anything else, contact the author on X: [@rotejin](https://x.com/rotejin).

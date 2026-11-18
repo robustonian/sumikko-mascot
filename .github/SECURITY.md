@@ -10,6 +10,8 @@
 
 このリポジトリの **Security** タブ → **Report a vulnerability** から、非公開で報告してください（GitHub の Private vulnerability reporting）。
 
+この方法が使えない場合は、作者の X（[@rotejin](https://x.com/rotejin)）に DM で連絡してください。
+
 書いてほしいこと:
 
 - 影響のあるファイルや機能
@@ -32,6 +34,6 @@
 
 ## English
 
-Please do not post vulnerability details in public issues. Use **Security → Report a vulnerability** (GitHub private vulnerability reporting) in this repository.
+Please do not post vulnerability details in public issues. Use **Security → Report a vulnerability** (GitHub private vulnerability reporting) in this repository. If that is not possible, send a direct message to [@rotejin](https://x.com/rotejin) on X.
 
 The app makes no network connections. It ships no executables: `Start.cmd` compiles the source with the C# compiler of the .NET Framework that comes with Windows. It polls the key state with `GetAsyncKeyState` (no global hooks) and uses only whether a key was pressed, whether it was Enter and whether it is held; typed text is never recorded. Audio is used only for the mouth movement, as a volume level, and is never recorded. Settings are saved only under `bin/` in the project folder; nothing is written to the registry or to Windows startup. Character folders contain only PNG images and a numeric `character.txt`; no code from them is executed.
