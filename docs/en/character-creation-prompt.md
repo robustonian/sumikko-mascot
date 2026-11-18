@@ -11,7 +11,7 @@ How to use it:
 3. Attach a reference picture of the character you want and send it together with the text.
 4. The AI shows you one key illustration and asks you to confirm it. Approve it if you like it. After that, the AI carries on until the character can be chosen in the app.
 
-The bundled Pink-chan and Koji-chan were made this way with GPT-6 Astra (reasoning effort: medium). Every generation is different. Only attach a picture you are allowed to use. The bundled characters (Tomari, Pink-chan and Koji-chan) cannot be used as references ([asset license](../../ASSETS.md)).
+The recommended model is **GPT-6.2 Sol (reasoning effort: high)**. Making a character with it has been confirmed, and it uses fewer tokens. The bundled Pink-chan and Koji-chan were made this way earlier with GPT-6 Astra (reasoning effort: medium). Every generation is different. Only attach a picture you are allowed to use. The bundled characters (Tomari, Pink-chan and Koji-chan) cannot be used as references ([asset license](../../ASSETS.md)).
 
 ```text
 Please turn the character in the attached picture into a new desktop mascot for this repository.

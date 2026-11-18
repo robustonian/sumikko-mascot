@@ -48,7 +48,7 @@ body:
     id: model
     attributes:
       label: モデルと推論の設定 / Model and reasoning effort
-      placeholder: GPT-6 Astra, medium
+      placeholder: GPT-6.2 Sol, high
     validations:
       required: false
 

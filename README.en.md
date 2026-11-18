@@ -44,7 +44,7 @@ To make your own character you also need:
 
 When it is done, start the app with `Start.cmd`, right-click the mascot and pick your character under **キャラクター** (Character). If the app was running while the character was made, quit it and start it again.
 
-- The bundled characters were made with GPT-6 Astra (reasoning effort: medium).
+- The recommended model is **GPT-6.2 Sol (reasoning effort: high)**. Making a character with it has been confirmed, and it uses fewer tokens. The bundled Pink-chan and Koji-chan were made earlier with GPT-6 Astra (reasoning effort: medium).
 - Every generation is different, so results vary. The AI can only check still frames, so judge the timing and feel of the motion by running it yourself.
 - Only use a picture you are allowed to use. The bundled characters' pictures cannot be used as references (see [License](#license)).
 
