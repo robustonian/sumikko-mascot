@@ -10,8 +10,9 @@ How to use it:
 2. Copy the text below and replace `[CHARACTER NAME]`.
 3. Attach a reference picture of the character you want and send it together with the text.
 4. The AI shows you one key illustration and asks you to confirm it. Approve it if you like it. After that, the AI carries on until the character can be chosen in the app.
+5. When it is ready, run it in the app and ask for follow-up fixes where something looks unnatural ([Polishing with follow-up requests](#polishing-with-follow-up-requests)).
 
-The recommended model is **GPT-6.2 Sol (reasoning effort: high)**. Making a character with it has been confirmed, and it uses fewer tokens. The bundled Pink-chan and Koji-chan were made this way earlier with GPT-6 Astra (reasoning effort: medium). Every generation is different. Only attach a picture you are allowed to use. The bundled characters (Tomari, Pink-chan and Koji-chan) cannot be used as references ([asset license](../../ASSETS.md)).
+The recommended model is **GPT-6.2 Sol (reasoning effort: high)**. Making a character with it has been confirmed, and it uses fewer tokens. Every generation is different. Only attach a picture you are allowed to use. The bundled characters (Tomari, Pink-chan and Koji-chan) cannot be used as references ([asset license](../../ASSETS.md)).
 
 ```text
 Please turn the character in the attached picture into a new desktop mascot for this repository.
@@ -75,4 +76,34 @@ No commit is needed.
 If the environment or anything else prevents you from finishing, try the possible alternatives, then tell me exactly what blocked you and what is left unfinished.
 
 Finally, report in plain English where you added it, how to use it, what motion you checked, the check results, and any remaining limitations or things you could not verify.
+```
+
+## Polishing with follow-up requests
+
+The AI can only check still frames. When the character is ready, run it in the app, and if the way the eyes close, the hand motion, a seam between parts or anything else looks unnatural, ask for a fix in the same conversation. **Point out one thing at a time, saying in which scene, where, and how it looks**: the AI can then make a pinpoint fix, and the result gets noticeably better. A screenshot makes it even clearer. After each fix, quit the app and start it again before checking.
+
+Examples:
+
+```text
+Half-way through a blink, the ends of the closed lashes show as black specks outside the open eyes. Please make the eyes close naturally.
+```
+
+```text
+When the keyboard hand is raised high, the sleeve looks thin. Please keep the sleeve's width while it moves.
+```
+
+```text
+When I move the mouse, the outline of the mouse-side shoulder breaks. Please make the shoulder line continuous.
+```
+
+```text
+When the hand turns, the border between the hand and the cuff looks misaligned. Please realign that border.
+```
+
+```text
+When the head sinks while dozing, a gap shows between the neck and the collar.
+```
+
+```text
+When the mouth starts to open, the closed mouth and the open mouth overlap and look doubled.
 ```

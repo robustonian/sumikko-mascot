@@ -44,8 +44,9 @@ To make your own character you also need:
 
 When it is done, start the app with `Start.cmd`, right-click the mascot and pick your character under **キャラクター** (Character). If the app was running while the character was made, quit it and start it again.
 
-- The recommended model is **GPT-6.2 Sol (reasoning effort: high)**. Making a character with it has been confirmed, and it uses fewer tokens. The bundled Pink-chan and Koji-chan were made earlier with GPT-6 Astra (reasoning effort: medium).
+- The recommended model is **GPT-6.2 Sol (reasoning effort: high)**. Making a character with it has been confirmed, and it uses fewer tokens.
 - Every generation is different, so results vary. The AI can only check still frames, so judge the timing and feel of the motion by running it yourself.
+- If the way the eyes close, the hand motion or a seam between parts looks unnatural, tell the AI exactly in which scene, where and how, and ask for a pinpoint fix; this improves the result ([example requests](docs/en/character-creation-prompt.md#polishing-with-follow-up-requests)).
 - Only use a picture you are allowed to use. The bundled characters' pictures cannot be used as references (see [License](#license)).
 
 To prepare the parts yourself, or to learn how characters are switched, see [Adding and switching characters](docs/en/characters.md).
