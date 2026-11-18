@@ -1,0 +1,101 @@
+name: 不具合の報告 / Bug report
+description: アプリが起動しない、動きや表示がおかしい / The app does not start or behaves wrongly
+title: "[不具合]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        報告ありがとうございます。Issue は誰でも見られます。個人情報や、使ってよいか分からない画像は貼らないでください。
+        Thanks for the report. Issues are public: please remove personal information and images you may not share.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 何が起きたか / What happened
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現の手順 / Steps to reproduce
+      placeholder: |
+        1. Start.cmd をダブルクリック
+        2. キャラを右クリック → …
+        3. …
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待した動き / Expected behavior
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: どの部分か / Area
+      options:
+        - 起動・ビルド / Start and build
+        - 打鍵・マウスの動き / Typing and mouse motion
+        - しぐさ（居眠り・あいさつなど） / Gestures
+        - 口パク・音声 / Mouth and audio
+        - 表示・メニュー・設定 / Display, menu and settings
+        - キャラクターの切り替え / Switching characters
+        - ドキュメント / Documentation
+        - その他 / Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: character
+    attributes:
+      label: キャラクター / Character
+      options:
+        - 妹尾トマリ（見本） / Tomari (sample)
+        - ピンクちゃん / Pink-chan
+        - 工事ちゃん / Koji-chan
+        - 自分で作ったキャラクター / My own character
+        - キャラクターに関係しない / Not related
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows のバージョン / Windows version
+      description: 設定 → システム → バージョン情報 / Settings → System → About
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+
+  - type: input
+    id: scale
+    attributes:
+      label: 画面の拡大率 / Display scaling
+      description: 設定 → システム → ディスプレイ → 拡大/縮小。画面が複数あるときは、キャラを置いている画面の値 / The display the mascot is on
+      placeholder: "150%"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: 入手の方法 / How you got it
+      options:
+        - ZIP をダウンロード / Downloaded ZIP
+        - git clone
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 表示されたメッセージ・スクリーンショット / Messages and screenshots
+      description: Start.cmd の黒い画面に出た文字や、エラーのメッセージがあれば貼ってください / Text shown in the Start.cmd window or error dialogs
+    validations:
+      required: false

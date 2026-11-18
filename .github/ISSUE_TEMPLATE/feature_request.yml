@@ -1,0 +1,40 @@
+name: 要望 / Feature request
+description: こんな機能や動きがほしい / Suggest an improvement
+title: "[要望]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 困っていること・したいこと / Problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: ほしい機能や動き / Proposed solution
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: ほかに考えた方法 / Alternatives considered
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: どの部分か / Area
+      options:
+        - 動き・しぐさ / Motion and gestures
+        - 口パク・音声 / Mouth and audio
+        - 表示・メニュー・設定 / Display, menu and settings
+        - キャラクター作り / Character creation
+        - ドキュメント / Documentation
+        - その他 / Other
+    validations:
+      required: true

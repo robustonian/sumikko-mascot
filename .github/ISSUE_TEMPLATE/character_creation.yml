@@ -1,0 +1,69 @@
+name: キャラクター作りの相談 / Character creation
+description: 依頼文で自分のキャラクターを作るときにうまくいかない / Trouble making your own character
+title: "[キャラ作り]: "
+labels:
+  - character-creation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ChatGPT・Codex の使い方や料金、生成された絵の出来そのものにはお答えできないことがあります。
+        Issue は誰でも見られます。他人のキャラクターの画像や、使ってよいか分からない画像は貼らないでください。
+        We may not be able to help with ChatGPT/Codex usage, pricing or the quality of generated pictures. Issues are public: do not attach images you may not share.
+
+  - type: dropdown
+    id: step
+    attributes:
+      label: どこで止まったか / Where it went wrong
+      options:
+        - 完成図（キー画像）の生成 / Generating the key illustration
+        - パーツ画像の生成 / Generating the parts
+        - 画像の照合（check_layers.py） / Checking the layers
+        - 位置合わせ・アプリへの組み込み / Fitting and adding to the app
+        - 検査（verify.ps1） / Running the checks
+        - アプリのメニューに出ない・表示がおかしい / Not shown in the menu, or looks wrong
+        - その他 / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 何が起きたか / What happened
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tool
+    attributes:
+      label: 使った環境 / Tool
+      options:
+        - ChatGPT デスクトップアプリの Codex / Codex in the ChatGPT desktop app
+        - Codex CLI
+        - その他 / Other
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: モデルと推論の設定 / Model and reasoning effort
+      placeholder: GPT-6 Astra, medium
+    validations:
+      required: false
+
+  - type: textarea
+    id: report
+    attributes:
+      label: AI の最後の報告やエラー / The AI's last report or errors
+      description: 長い場合は、関係するところだけで構いません / Only the relevant part is fine
+    validations:
+      required: false
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows のバージョン / Windows version
+      placeholder: Windows 11 24H2
+    validations:
+      required: false

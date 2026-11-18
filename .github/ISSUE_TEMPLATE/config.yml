@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 脆弱性の報告 / Report a vulnerability
+    url: https://github.com/rotejin/sumikko-mascot/security/advisories/new
+    about: 脆弱性は公開の Issue に書かず、こちらから非公開で報告してください / Please report vulnerabilities privately here.
+  - name: キャラクター画像の利用条件 / Character image terms
+    url: https://github.com/rotejin/sumikko-mascot/blob/main/ASSETS.md
+    about: 同梱キャラクターの画像の利用条件です。ここに書いていない利用の相談は受け付けていません / Uses not listed there are not permitted.

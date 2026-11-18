@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Regression checks and preview frames
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File verify.ps1
+
+      - name: Build the app
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File build.ps1
+
+      - name: Start the app (smoke test)
+        shell: powershell
+        run: |
+          $watch = [Diagnostics.Stopwatch]::StartNew()
+          $app = Start-Process -FilePath 'bin\SumikkoCompanion.exe' -ArgumentList '--smoke-test','--demo' -PassThru -Wait
+          $watch.Stop()
+          $seconds = [Math]::Round($watch.Elapsed.TotalSeconds, 1)
+          Write-Output "Exit code $($app.ExitCode) after $seconds s"
+          if ($app.ExitCode -ne 0) { throw 'The app exited with an error.' }
+          # --smoke-test closes the window after 3 seconds; an earlier exit means it did not start.
+          if ($seconds -lt 3) { throw 'The app exited before the smoke test finished.' }
+
+      - name: Upload preview frames
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: preview-frames
+          path: preview/
+          if-no-files-found: ignore
+          retention-days: 7

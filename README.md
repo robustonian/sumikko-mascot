@@ -4,6 +4,7 @@
 <p align="center"><strong>One character picture + one prompt = your own animated desktop mascot.</strong></p>
 
 <p align="center">
+  <a href="https://github.com/rotejin/sumikko-mascot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/rotejin/sumikko-mascot/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue">
   <img alt="Platform: Windows" src="https://img.shields.io/badge/Platform-Windows-0078D6">
   <img alt="Runs offline" src="https://img.shields.io/badge/Runs-offline-brightgreen">
@@ -69,6 +70,8 @@ Windows のデスクトップの隅っこで、あなたのキー入力やマウ
 
 ピンクちゃんと工事ちゃんのフォルダには、制作に使った指示文（`generation-prompts.json`）と、調整・検証の記録（`README.md`）も入っています。
 
+同梱のキャラクターは、どれも ろてじん のオリジナルキャラクターです。使える範囲は [ライセンス](#ライセンス) を見てください。
+
 ## ドキュメント
 
 | 目的 | 読むもの |
@@ -79,6 +82,49 @@ Windows のデスクトップの隅っこで、あなたのキー入力やマウ
 | 画像生成用の参考シート・パーツの仕様 | [パーツ制作ガイド](assets/parts-reference/README.md) |
 | ビルド・回帰検査・ソースの構成 | [開発と検証](docs/development.md) |
 | コーディング AI 向けの作業の決まり | [AGENTS.md](AGENTS.md) |
+| 変更の履歴 | [CHANGELOG.md](CHANGELOG.md) |
+
+## 困ったときは
+
+### ZIP から起動すると Windows の警告が出る
+
+インターネットから入手したファイルなので、「Windows によって PC が保護されました」などの警告が出ることがあります。ZIP を展開する前に、ZIP を右クリック → **プロパティ** → 下にある **許可する** にチェック → **OK** としてから展開すると、この警告は出なくなります。
+
+### キャラが出てこない
+
+- 通知領域（タスクバーの右端。**^** の中にあることもあります）にキャラの顔のアイコンがあれば、すでに起動しています（二重には起動しません）。アイコンを右クリック → **表示 → 画面内に戻す** で、ポインターのある画面の右下に戻ります。隠している場合は **表示する** を選びます。
+- アイコンがない場合は、もう一度 `Start.cmd` を開いて、黒い画面にエラーが出ていないかを見てください。ビルドに失敗したときは、その画面が開いたまま止まります。
+
+### ビルドに失敗する
+
+- Windows に入っている .NET Framework 4 の C# コンパイラ（`C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe`）を使います。このファイルがない場合は、Microsoft のサイトから .NET Framework 4.8 を入れてください。
+- 解決しないときは、黒い画面に出たメッセージを添えて [不具合の報告](https://github.com/rotejin/sumikko-mascot/issues/new/choose) をしてください。
+
+### 作ったキャラクターがメニューに出ない
+
+- `characters/<フォルダ名>/` に、必要な PNG と `character.txt` がそろっているかを確かめてください（[キャラクターの追加と切り替え](docs/characters.md)）。
+- アプリの起動中に作ったときは、一度終了してから起動し直してください。
+
+### 口パクしない
+
+起動したときの音声は、いつもオフです。キャラを右クリック → **音声** で入力元を選びます。反応が弱いときは、**音声 → オーディオデバイス設定…** で感度を上げます（[使い方](docs/usage.md#口パク音声)）。
+
+## 新しい版にする
+
+**git で入手した場合**: キャラを右クリック → **終了** → `git pull` → `bin\SumikkoCompanion.exe` を削除 → `Start.cmd` を開く。`Start.cmd` は実行ファイルがないときだけ作り直すので、古い実行ファイルを消してから起動します。`bin\` にある設定ファイルは消さないでください。
+
+**ZIP で入手した場合**: 新しい ZIP を別のフォルダに展開し、古いフォルダから次のものを同じ場所へコピーします。
+
+- `bin\settings.txt` と `bin\tuning*.txt`（位置・サイズ・音声・動きの調整などの設定）
+- 自分で作ったキャラクターのフォルダ（`characters\<フォルダ名>`）
+
+## アンインストール
+
+キャラを右クリック → **終了** してから、フォルダごと削除します。設定はフォルダの中の `bin\` にだけ保存していて、レジストリや Windows の自動起動には何も登録していません。
+
+## 質問・不具合の報告
+
+[Issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) から、テンプレートを選んで書いてください。書いてほしいことは [SUPPORT.md](.github/SUPPORT.md) にあります。脆弱性は公開の Issue に書かず、[SECURITY.md](.github/SECURITY.md) の方法で報告してください。
 
 ## プライバシー
 
@@ -90,7 +136,15 @@ Sumikko（すみっこ）は日本語で「隅っこ」という意味です。�
 
 ## ライセンス
 
-ソースコード・スクリプト・文書は [MIT License](LICENSE) です。**キャラクター画像は MIT の対象外**で、再利用には別途許可が必要です。詳しくは [ASSETS.md](ASSETS.md) を見てください。
+ソースコード・スクリプト・文書は [MIT License](LICENSE) です。
+
+**キャラクター画像は MIT の対象外**です。同梱のキャラクター（妹尾トマリ・ピンクちゃん・工事ちゃん）は ろてじん のオリジナルキャラクターで、[画像の利用条件（ASSETS.md）](ASSETS.md) の範囲で使えます。
+
+- **ピンクちゃん・工事ちゃん**: 自分の PC のマスコットとして使うこと、非営利の配信・動画・SNS 投稿に映すことができます。
+- **妹尾トマリ**: アプリのお試しと、その様子の SNS 投稿（非営利）までです。配信や動画では使えません。
+- どのキャラクターも、自分のキャラクターとして使うこと、画像を取り出してほかに使うこと、営利で使うことはできません。
+
+自分の画像から作ったキャラクターは、あなたのものです（元の画像の権利と、画像生成サービスの規約に従ってください）。
 
 ## English
 
@@ -99,5 +153,6 @@ Sumikko（すみっこ）は日本語で「隅っこ」という意味です。�
 - **Try it**: double-click `Start.cmd`. Windows only (tested on Windows 11). It builds with the .NET Framework compiler that ships with Windows; no extra packages are needed to run it.
 - **Make your own**: open this folder in Codex (ChatGPT desktop app or Codex CLI), attach a picture of your character, and send the prompt in [docs/character-creation-prompt.md](docs/character-creation-prompt.md) with the character name filled in. After you approve a single key illustration, the AI generates the layered parts, measures their positions, adds the character to the app and runs the checks. The bundled Pink-chan and Koji-chan were made this way.
 - The documentation and the prompt are written in Japanese.
-- Code, scripts and documents are under the MIT License. **The character images are not MIT-licensed**; see [ASSETS.md](ASSETS.md).
+- **Trouble?** If Windows warns about the downloaded ZIP, right-click the ZIP → Properties → check **Unblock** before extracting. To update with git, quit the app, `git pull`, delete `bin\SumikkoCompanion.exe` and run `Start.cmd` again. To uninstall, quit the app and delete the folder; settings are stored only in `bin\`. Questions and bug reports: [SUPPORT.md](.github/SUPPORT.md). Vulnerabilities: [SECURITY.md](.github/SECURITY.md).
+- Code, scripts and documents are under the MIT License. **The character images are not.** The bundled characters are original characters by ろてじん (Rotejin). Pink-chan and Koji-chan may be used as your desktop mascot and shown in non-commercial posts, streams and videos; Tomari is for trying the app only. None of them may be used as your own character or commercially. See [ASSETS.md](ASSETS.md).
 - Not affiliated with OpenAI, or with San-X's "Sumikko Gurashi".

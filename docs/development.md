@@ -43,6 +43,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File verify.ps1
 
 ビルドのみ行う場合は `build.ps1` を使います。アプリが起動中なら、利用者が終了してから実行してください。`verify.ps1` は別の出力先を使うため起動中でも実行できます。
 
+GitHub では、`main` への push と Pull Request のたびに GitHub Actions（`.github/workflows/ci.yml`、Windows）が `verify.ps1`、`build.ps1`、起動の確認（`--smoke-test --demo`）を行います。書き出したプレビュー静止画は、実行結果の Artifacts から取得できます。
+
 画像の検査・参考シート生成にはPythonとPillowが必要です。アプリの実行には不要です。
 
 ```powershell
