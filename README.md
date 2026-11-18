@@ -1,5 +1,7 @@
 # Sumikko Mascot（隅っこキャラ）
 
+<p align="center"><strong>日本語</strong> | <a href="README.en.md">English</a></p>
+
 <p align="center"><strong>ChatGPT に「作りたいキャラクターの画像 1 枚」と「用意されたプロンプト 1 つ」を渡すだけで、自分だけのデスクトップマスコットが作れます。</strong></p>
 <p align="center"><strong>One character picture + one prompt = your own animated desktop mascot.</strong></p>
 
@@ -18,8 +20,6 @@
 Windows のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。アプリの中では「隅っこキャラ」という名前で表示されます。
 
 同梱の「ピンクちゃん」と「工事ちゃん」は、どちらも参考画像 1 枚とこのリポジトリの依頼文から作ったキャラクターです。完成図、パーツ画像の生成、位置合わせ、組み込み、動作検査まで AI が行っています。
-
-> English summary is [at the bottom](#english).
 
 ## 必要なもの
 
@@ -83,6 +83,7 @@ Windows のデスクトップの隅っこで、あなたのキー入力やマウ
 | ビルド・回帰検査・ソースの構成 | [開発と検証](docs/development.md) |
 | コーディング AI 向けの作業の決まり | [AGENTS.md](AGENTS.md) |
 | 変更の履歴 | [CHANGELOG.md](CHANGELOG.md) |
+| 開発に参加する | [CONTRIBUTING.md](.github/CONTRIBUTING.md) |
 
 ## 困ったときは
 
@@ -111,7 +112,7 @@ Windows のデスクトップの隅っこで、あなたのキー入力やマウ
 
 ## 新しい版にする
 
-**git で入手した場合**: キャラを右クリック → **終了** → `git pull` → `bin\SumikkoCompanion.exe` を削除 → `Start.cmd` を開く。`Start.cmd` は実行ファイルがないときだけ作り直すので、古い実行ファイルを消してから起動します。`bin\` にある設定ファイルは消さないでください。
+**git で入手した場合**: キャラを右クリック → **終了** → `git pull` → `Start.cmd` を開く。ソースが変わっていれば、`Start.cmd` が自動でビルドし直します。`bin\` にある設定はそのまま使われます。
 
 **ZIP で入手した場合**: 新しい ZIP を別のフォルダに展開し、古いフォルダから次のものを同じ場所へコピーします。
 
@@ -148,11 +149,4 @@ Sumikko（すみっこ）は日本語で「隅っこ」という意味です。�
 
 ## English
 
-**Sumikko Mascot** turns one character picture and one prompt into an animated desktop mascot for Windows. *Sumikko* means "the little corner" in Japanese: the mascot sits in a corner of your screen, typing on its keyboard and moving its mouse along with you.
-
-- **Try it**: double-click `Start.cmd`. Windows only (tested on Windows 11). It builds with the .NET Framework compiler that ships with Windows; no extra packages are needed to run it.
-- **Make your own**: open this folder in Codex (ChatGPT desktop app or Codex CLI), attach a picture of your character, and send the prompt in [docs/character-creation-prompt.md](docs/character-creation-prompt.md) with the character name filled in. After you approve a single key illustration, the AI generates the layered parts, measures their positions, adds the character to the app and runs the checks. The bundled Pink-chan and Koji-chan were made this way.
-- The documentation and the prompt are written in Japanese.
-- **Trouble?** If Windows warns about the downloaded ZIP, right-click the ZIP → Properties → check **Unblock** before extracting. To update with git, quit the app, `git pull`, delete `bin\SumikkoCompanion.exe` and run `Start.cmd` again. To uninstall, quit the app and delete the folder; settings are stored only in `bin\`. Questions and bug reports: [SUPPORT.md](.github/SUPPORT.md). Vulnerabilities: [SECURITY.md](.github/SECURITY.md).
-- Code, scripts and documents are under the MIT License. **The character images are not.** The bundled characters are original characters by ろてじん (Rotejin). Pink-chan and Koji-chan may be used as your desktop mascot and shown in non-commercial posts, streams and videos; Tomari is for trying the app only. None of them may be used as your own character or commercially. See [ASSETS.md](ASSETS.md).
-- Not affiliated with OpenAI, or with San-X's "Sumikko Gurashi".
+The full English guide is in [README.en.md](README.en.md).

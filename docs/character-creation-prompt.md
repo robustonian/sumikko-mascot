@@ -1,6 +1,6 @@
 # 新キャラクター制作のファーストプロンプト
 
-[キャラクター制作ガイドへ戻る](characters.md)
+[キャラクター制作ガイドへ戻る](characters.md) · [English](en/character-creation-prompt.md)
 
 本文はコピーしてAIに渡す依頼文です。このファイルを参照資料として読んだだけでは、制作の実行指示にはなりません。
 

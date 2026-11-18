@@ -1,6 +1,6 @@
 # 開発と検証
 
-[トップへ戻る](../README.md)
+[トップへ戻る](../README.md) · [English](en/development.md)
 
 | 場所 | 内容 |
 | --- | --- |
@@ -41,7 +41,7 @@ Windows API の資料: [WinMM 音声バッファ](https://learn.microsoft.com/en
 powershell -NoProfile -ExecutionPolicy Bypass -File verify.ps1
 ```
 
-ビルドのみ行う場合は `build.ps1` を使います。アプリが起動中なら、利用者が終了してから実行してください。`verify.ps1` は別の出力先を使うため起動中でも実行できます。
+ビルドのみ行う場合は `build.ps1` を使います。`Start.cmd` は `build.ps1 -IfOutdated` を呼び、実行ファイルがないときか、`app/` のソースや `build.ps1` のほうが新しいときだけビルドします（アプリの起動中は作り直さず、終了してから起動し直すよう案内します）。アプリが起動中なら、利用者が終了してから実行してください。`verify.ps1` は別の出力先を使うため起動中でも実行できます。
 
 GitHub では、`main` への push と Pull Request のたびに GitHub Actions（`.github/workflows/ci.yml`、Windows）が `verify.ps1`、`build.ps1`、起動の確認（`--smoke-test --demo`）を行います。書き出したプレビュー静止画は、実行結果の Artifacts から取得できます。
 

@@ -1,4 +1,4 @@
-param([string]$OutputDirectory = '')
+param([string]$OutputDirectory = '', [switch]$IfOutdated)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $compiler = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
@@ -24,6 +24,21 @@ $sources = @(
 )
 foreach ($source in $sources) {
     if (-not (Test-Path -LiteralPath $source)) { throw "Missing source: $source" }
+}
+# Start.cmd passes -IfOutdated: build on the first run and again whenever a source file is
+# newer than the program (for example after git pull), otherwise keep the existing program.
+if ($IfOutdated -and (Test-Path -LiteralPath $outputFile)) {
+    $built = (Get-Item -LiteralPath $outputFile).LastWriteTimeUtc.Ticks
+    $inputs = @($sources) + @($MyInvocation.MyCommand.Path)
+    $newest = ($inputs | ForEach-Object { (Get-Item -LiteralPath $_).LastWriteTimeUtc.Ticks } | Measure-Object -Maximum).Maximum
+    if ($newest -le $built) { Write-Output $outputFile; return }
+    # A running copy keeps the program file locked, so leave it and say how to update.
+    $running = @(Get-Process -Name SumikkoCompanion -ErrorAction SilentlyContinue | Where-Object { $_.Path -eq $outputFile })
+    if ($running.Count -gt 0) {
+        Write-Warning 'The source has changed, but the app is running. Quit it from its menu and start it again to use the new version.'
+        Write-Output $outputFile
+        return
+    }
 }
 $references = @(
     (Join-Path $framework 'WPF\PresentationCore.dll'),

@@ -21,7 +21,7 @@
 ## このアプリの仕組み（安全面）
 
 - **ネットワーク通信をしません。**
-- 実行ファイルは同梱していません。`Start.cmd` は、初回だけ `build.ps1` を実行して、Windows に入っている .NET Framework の C# コンパイラでソースから `bin/SumikkoCompanion.exe` を作ります。`build.ps1` は実行ポリシーを一時的に無視する設定（`-ExecutionPolicy Bypass`）で起動します。
+- 実行ファイルは同梱していません。`Start.cmd` は `build.ps1` を実行し、初回と、ソースが更新されたときだけ、Windows に入っている .NET Framework の C# コンパイラでソースから `bin/SumikkoCompanion.exe` を作ります。`build.ps1` は実行ポリシーを一時的に無視する設定（`-ExecutionPolicy Bypass`）で起動します。
 - キー入力は、キーの状態を一定の間隔で読む方式（`GetAsyncKeyState`）で調べます。ほかのアプリの入力を横取りする「フック」は使いません。使うのは「キーが押された」「Enter かどうか」「押しっぱなしかどうか」だけで、どのキーを押したか、何を入力したかは記録しません。
 - マウスはポインターの位置とボタンの状態を読みます。
 - `Ctrl+Alt+C`（クリック透過の切り替え）を、Windows のホットキーとして登録します。

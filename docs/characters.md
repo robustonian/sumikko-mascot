@@ -1,6 +1,6 @@
 # キャラクターの追加と切り替え
 
-[トップへ戻る](../README.md)
+[トップへ戻る](../README.md) · [English](en/characters.md)
 
 ## 自分のキャラクターで作る
 

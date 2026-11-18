@@ -36,4 +36,4 @@ Issue は誰でも見られます。スクリーンショットやファイル�
 
 ## English
 
-Support is best-effort. Please check the README and the docs first, then open an [issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) with your Windows version, display scaling, the character you used and the steps to reproduce. Questions in English are welcome. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+Support is best-effort. Please check [Troubleshooting](../README.en.md#troubleshooting) in the English README and the [usage guide](../docs/en/usage.md) first, then open an [issue](https://github.com/rotejin/sumikko-mascot/issues/new/choose) with your Windows version, display scaling, the character you used and the steps to reproduce. Questions in English are welcome. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).

@@ -1,0 +1,22 @@
+# Editor settings that match .gitattributes and the existing files.
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cs,ps1,cmd}]
+end_of_line = crlf
+
+[*.{md,py,json,txt,yml,yaml}]
+end_of_line = lf
+
+[*.{yml,yaml,json}]
+indent_size = 2
+
+[*.md]
+# Two trailing spaces can be a line break in Markdown.
+trim_trailing_whitespace = false
