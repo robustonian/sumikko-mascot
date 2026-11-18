@@ -4,7 +4,7 @@
 
 このリポジトリの目的は 2 つです。
 
-1. デスクトップ常駐キャラのアプリ（Windows / .NET Framework / WPF、透過 PNG 5 枚＋描画コード）。キャラクターは複数置けて、メニューから切り替えられる。
+1. デスクトップ常駐キャラのアプリ（Windows / .NET Framework / WPF、および Linux / Python 3 / PyQt5、透過 PNG 5 枚＋描画コード）。キャラクターは複数置けて、メニューから切り替えられる。
 2. **利用者が画像生成で作ったパーツ画像を AI が受け取り、そのキャラクターで動くアプリに組み立てること**。
 
 利用者は絵の専門家でもプログラマーでもないかもしれません。報告は利用者が使っている言語で（日本語なら平易な日本語で）、何を確かめたか・何を確かめていないかをはっきり書いてください。
@@ -20,6 +20,8 @@
 
 ## 環境と決まりごと
 
+- **Linux版**: `./Start.sh` で起動、`./verify.sh` でLinux用の全回帰検査・同梱3キャラの起動検査・静止画の出力。詳細は `docs/linux.md`。Linux用のPythonソースは `linux/` に置き、WindowsのC#ソース一覧への追加は不要。PyQt5はLinux版だけの依存。以下のPowerShell・C# 5・外部パッケージ不要の決まりはWindows版に適用する。
+- Linuxの個人設定 `bin/linux/settings.json` も消さない・勝手に書き換えない。検査では `--settings-dir` に一時フォルダを渡す。入力機器の権限やグループを自動変更しない。
 - **ビルド**: `powershell -NoProfile -ExecutionPolicy Bypass -File build.ps1`。アプリの起動中は失敗するので、先に `Get-Process -Name SumikkoCompanion -ErrorAction SilentlyContinue` で確かめ、起動中なら利用者に閉じてもらう（勝手に終了させない）。
 - **検査**: `powershell -NoProfile -ExecutionPolicy Bypass -File verify.ps1`。本体のコンパイル、回帰検査、プレビュー静止画（`preview/frame-*.png`）の書き出しを行う。アプリの起動中でも実行できる。変更のたびに全項目の合格を確かめる。
 - **起動の確認**: `bin/SumikkoCompanion.exe --smoke-test --demo` は 3 秒で終了する。すでに起動中だと二重起動防止で即終了するので、経過時間が 3 秒以上かを見る。

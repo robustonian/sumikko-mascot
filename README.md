@@ -8,7 +8,7 @@
 <p align="center">
   <a href="https://github.com/rotejin/sumikko-mascot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/rotejin/sumikko-mascot/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue">
-  <img alt="Platform: Windows" src="https://img.shields.io/badge/Platform-Windows-0078D6">
+  <img alt="Platform: Windows / Linux" src="https://img.shields.io/badge/Platform-Windows%20%2F%20Linux-0078D6">
   <img alt="Runs offline" src="https://img.shields.io/badge/Runs-offline-brightgreen">
   <a href="https://github.com/sponsors/rotejin"><img alt="Sponsor rotejin" src="https://img.shields.io/badge/Sponsor-rotejin-ea4aaa?logo=githubsponsors&logoColor=white"></a>
   <a href="https://x.com/rotejin"><img alt="X: @rotejin" src="https://img.shields.io/badge/X-%40rotejin-000000?logo=x&logoColor=white"></a>
@@ -18,21 +18,29 @@
   <img src="docs/media/tomari-typing.gif" alt="キー入力に合わせてキーボードを叩く妹尾トマリ（トレイラーより）" width="720">
 </p>
 
-Windows のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。日本語名は「隅っこキャラ」で、アプリの中でもこの名前で表示されます。
+Windows・Linux のデスクトップの隅っこで、あなたのキー入力やマウス操作に合わせてキーボードを叩いたり、マウスを動かしたりするキャラクターです。Live2D や PSD は使わず、透過 PNG と描画コードだけで動きます。日本語名は「隅っこキャラ」で、アプリの中でもこの名前で表示されます。
 
 同梱の「ピンクちゃん」と「工事ちゃん」は、どちらも参考画像 1 枚とこのリポジトリの依頼文から作ったキャラクターです。完成図、パーツ画像の生成、位置合わせ、組み込み、動作検査まで AI が行っています。
 
-## 必要なもの
+## 同梱のキャラクターで試す
 
-- **Windows**（動作確認は Windows 11 のみです。Windows 10 でも動く見込みですが、確認していません。macOS・Linux では動きません）
-- .NET Framework 4.x（Windows に標準で入っています）
+**Code → Download ZIP** で取得して展開するか、`git clone` したフォルダから起動します。
+
+| OS | 起動方法 | 必要なもの・確認環境 |
+| --- | --- | --- |
+| Windows | `Start.cmd` をダブルクリック。初回は自動でビルドします | .NET Framework 4.x。Windows 11 で確認済み |
+| Linux | 端末でプロジェクトのフォルダを開き、`./Start.sh` を実行 | Python 3 と PyQt5。X11 または Wayland（位置指定には XWayland を使用） |
+
+Linux版は起動時にGPUによるOpenGL描画とCPU描画を自動で選びます。専用のグラフィックボードは不要です。
+
+キャラを右クリックすると、キャラクターの切り替え、表示サイズ、音声、終了を選べます。Linuxで必要なパッケージと入力権限は [Linuxで使う](docs/linux.md)、Windowsの操作は [Windows版の使い方](docs/usage.md) にまとめています。
+
+## 3 ステップで自分のマスコットを作る
 
 自分のキャラクターを作る場合は、さらに次のものが必要です。
 
 - **ChatGPT デスクトップアプリの Codex** または **Codex CLI**（画像生成と、フォルダ内のファイル編集・コマンド実行ができる環境）。利用できるプランは OpenAI の案内を確認してください
-- Python 3（AI が画像の照合ツールで使います。アプリの実行には不要です）
-
-## 3 ステップで自分のマスコットを作る
+- Python 3（AI が画像の照合ツールで使います。Windows版の実行には不要です）
 
 1. **ダウンロードする**
    このページの **Code → Download ZIP** で取得して展開するか、`git clone` します。
@@ -41,7 +49,7 @@ Windows のデスクトップの隅っこで、あなたのキー入力やマウ
 3. **完成図を 1 回だけ確認する**
    AI が「机でキーボードとマウスを操作するちびキャラ」の完成図を 1 枚見せて、確認を求めます。よければ OK と返事をします。あとは、パーツ画像の生成、位置合わせ、アプリへの組み込み、動作検査まで AI が進めます。
 
-できあがったら `Start.cmd` で起動し、キャラを右クリック → **キャラクター** から選びます。アプリの起動中に作った場合は、一度終了してから起動し直してください。
+できあがったら Windows は `Start.cmd`、Linux は `./Start.sh` で起動し、キャラを右クリック → **キャラクター** から選びます。アプリの起動中に作った場合は、一度終了してから起動し直してください。
 
 - おすすめのモデルは **GPT-6.2 Sol（推論 high）** です。この設定で制作できることを確かめていて、token の消費も少なめです。
 - 生成結果は毎回異なるため、仕上がりには差が出ます。AI が確認できるのは静止したコマだけなので、動きのテンポや印象は実際に動かして確かめてください。
@@ -49,12 +57,6 @@ Windows のデスクトップの隅っこで、あなたのキー入力やマウ
 - 渡す画像は、自分が使ってよい画像にしてください。
 
 自分で画像を用意して組み立てる方法や、キャラクターの切り替えについては [キャラクターの追加と切り替え](docs/characters.md) を見てください。
-
-## まず同梱のキャラで動かしてみる
-
-`Start.cmd` をダブルクリックします。初回は Windows 標準のコンパイラでビルドしてから起動します。アプリの実行に Python や外部パッケージは要りません。
-
-キャラを右クリックすると、キャラクターの切り替え、表示サイズ、音声、動きの設定を変えられます。終了もこのメニューから行います。詳しくは [使い方](docs/usage.md) を見てください。
 
 ## トレイラー
 
@@ -85,6 +87,7 @@ https://github.com/user-attachments/assets/f4ac66c1-2760-4643-8265-25f2bc6cb0da
 | 目的 | 読むもの |
 | --- | --- |
 | 参考画像から AI にキャラを作ってもらう | [キャラクター制作の依頼文](docs/character-creation-prompt.md) |
+| Linuxでの起動・入力・設定 | [Linuxで使う](docs/linux.md) |
 | 操作・音声・動きの調整 | [使い方](docs/usage.md) |
 | 自分で用意した画像でキャラを追加する、切り替える | [キャラクターの追加と切り替え](docs/characters.md) |
 | 画像生成用の参考シート・パーツの仕様 | [パーツ制作ガイド](assets/parts-reference/README.md) |
@@ -99,12 +102,16 @@ https://github.com/user-attachments/assets/f4ac66c1-2760-4643-8265-25f2bc6cb0da
 
 インターネットから入手したファイルなので、「Windows によって PC が保護されました」などの警告が出ることがあります。ZIP を展開する前に、ZIP を右クリック → **プロパティ** → 下にある **許可する** にチェック → **OK** としてから展開すると、この警告は出なくなります。
 
-### キャラが出てこない
+### Linuxでキャラが表示されない・キーに反応しない
+
+もう一度 `./Start.sh` を実行すると、起動中のキャラを再表示できます。キーに反応しない場合は `./Start.sh --diagnose` で入力機器の読み取り状況を確認してください。[Linuxの入力設定](docs/linux.md#キー入力とマウス)
+
+### Windowsでキャラが出てこない
 
 - 通知領域（タスクバーの右端。**^** の中にあることもあります）にキャラの顔のアイコンがあれば、すでに起動しています（二重には起動しません）。アイコンを右クリック → **表示 → 画面内に戻す** で、ポインターのある画面の右下に戻ります。隠している場合は **表示する** を選びます。
 - アイコンがない場合は、もう一度 `Start.cmd` を開いて、黒い画面にエラーが出ていないかを見てください。ビルドに失敗したときは、その画面が開いたまま止まります。
 
-### ビルドに失敗する
+### Windowsでビルドに失敗する
 
 - Windows に入っている .NET Framework 4 の C# コンパイラ（`C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe`）を使います。このファイルがない場合は、Microsoft のサイトから .NET Framework 4.8 を入れてください。
 - 解決しないときは、黒い画面に出たメッセージを添えて [不具合の報告](https://github.com/rotejin/sumikko-mascot/issues/new/choose) をしてください。
@@ -116,15 +123,16 @@ https://github.com/user-attachments/assets/f4ac66c1-2760-4643-8265-25f2bc6cb0da
 
 ### 口パクしない
 
-起動したときの音声は、いつもオフです。キャラを右クリック → **音声** で入力元を選びます。反応が弱いときは、**音声 → オーディオデバイス設定…** で感度を上げます（[使い方](docs/usage.md#口パク音声)）。
+起動したときの音声は、いつもオフです。Linuxでは右クリック → **音声（口パク）** で入力元を選び、**感度の調整…** で調整できます。Windowsでは **音声** で入力元を選び、反応が弱いときは、**音声 → オーディオデバイス設定…** で感度を上げます（[使い方](docs/usage.md#口パク音声)）。
 
 ## 新しい版にする
 
-**git で入手した場合**: キャラを右クリック → **終了** → `git pull` → `Start.cmd` を開く。ソースが変わっていれば、`Start.cmd` が自動でビルドし直します。`bin\` にある設定はそのまま使われます。
+**git で入手した場合**: キャラを右クリック → **終了** → `git pull` の順に操作し、Windowsは `Start.cmd`、Linuxは `./Start.sh` で起動します。ソースが変わっていれば、`Start.cmd` が自動でビルドし直します。`bin\` にある設定はそのまま使われます。
 
 **ZIP で入手した場合**: 新しい ZIP を別のフォルダに展開し、古いフォルダから次のものを同じ場所へコピーします。
 
 - `bin\settings.txt` と `bin\tuning*.txt`（位置・サイズ・音声・動きの調整などの設定）
+- Linuxの場合は `bin/linux/settings.json`（表示位置・サイズ・キャラクターごとの調整）
 - 自分で作ったキャラクターのフォルダ（`characters\<フォルダ名>`）
 
 ## アンインストール

@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://github.com/rotejin/sumikko-mascot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/rotejin/sumikko-mascot/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue">
-  <img alt="Platform: Windows" src="https://img.shields.io/badge/Platform-Windows-0078D6">
+  <img alt="Platform: Windows / Linux" src="https://img.shields.io/badge/Platform-Windows%20%2F%20Linux-0078D6">
   <img alt="Runs offline" src="https://img.shields.io/badge/Runs-offline-brightgreen">
   <a href="https://github.com/sponsors/rotejin"><img alt="Sponsor rotejin" src="https://img.shields.io/badge/Sponsor-rotejin-ea4aaa?logo=githubsponsors&logoColor=white"></a>
   <a href="https://x.com/rotejin"><img alt="X: @rotejin" src="https://img.shields.io/badge/X-%40rotejin-000000?logo=x&logoColor=white"></a>
@@ -17,7 +17,7 @@
   <img src="docs/media/tomari-typing.gif" alt="Tomari typing on her keyboard as you type (from the trailer)" width="720">
 </p>
 
-Sumikko Mascot is a little character that sits in a corner of your Windows desktop. It types on its keyboard when you type and moves its mouse when you move yours. No Live2D or PSD rig is involved: it runs on five transparent PNG images and drawing code. Its Japanese name is 隅っこキャラ (*Sumikko Kyara*, "the corner character"), which is also the name shown in the app.
+Sumikko Mascot is a little character that sits in a corner of your Windows or Linux desktop. It types on its keyboard when you type and moves its mouse when you move yours. No Live2D or PSD rig is involved: it runs on five transparent PNG images and drawing code. Its Japanese name is 隅っこキャラ (*Sumikko Kyara*, "the corner character"), which is also the name shown in the app.
 
 The bundled Pink-chan and Koji-chan were each made from a single reference picture and the prompt in this repository. The AI did all of it: the key illustration, the layered parts, the measurements, adding them to the app and checking the motion.
 
@@ -25,13 +25,25 @@ The bundled Pink-chan and Koji-chan were each made from a single reference pictu
 
 ## What you need
 
-- **Windows** (tested on Windows 11 only; Windows 10 is expected to work but has not been tested; macOS and Linux are not supported)
+- **Windows** (tested on Windows 11 only; Windows 10 is expected to work but has not been tested; macOS is not supported)
 - .NET Framework 4.x (included with Windows)
+- **Linux**: Python 3 + PyQt5. Use X11 or Wayland with XWayland for window positioning. See the [Linux guide (Japanese)](docs/linux.md).
 
 To make your own character you also need:
 
 - **Codex in the ChatGPT desktop app**, or **Codex CLI**: an environment that can generate images and edit files and run commands in a folder. Check OpenAI's pages for which plans include it.
-- Python 3 (the AI uses it for an image-checking tool; the app itself does not need it)
+- Python 3 (the AI uses it for an image-checking tool; the Windows app itself does not need it)
+
+## Run on Linux
+
+On Ubuntu / Debian, install dependencies if needed and launch from this folder:
+
+```sh
+sudo apt install python3-pyqt5 pulseaudio-utils xwayland
+./Start.sh
+```
+
+Right-click the character for settings and quit; drag with the left button to move it. `./Start.sh --demo` animates without input. `./Start.sh --diagnose` reports readable input devices. Global input on Wayland requires read access to `/dev/input/event*`; without it, the X11 fallback sees XWayland apps only. The launcher uses XWayland for window positioning and staying on top. Linux settings are separate, in `bin/linux/settings.json`. Running `./Start.sh` again restores a hidden character. Run `./verify.sh` for Linux regression checks and previews. See [the Linux guide](docs/linux.md) for details and differences from Windows.
 
 ## Make your own mascot in 3 steps
 
