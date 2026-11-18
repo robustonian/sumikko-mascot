@@ -3,6 +3,24 @@
 このプロジェクトの主な変更を記録します。
 All notable changes to this project are recorded here.
 
+## [0.1.1] - 2026-11-18
+
+文書だけの更新です。アプリの動作は v0.1.0 と同じです。 / Documentation-only update; the app itself is unchanged.
+
+- おすすめのモデルを GPT-6.2 Sol（推論 high）にしました。
+- 目の閉じ方・手の動き・パーツの切れ目などを、追加の指示でピンポイントに直す方法と、指示の例を足しました。
+- 英語の案内は、動作を確かめた日本語の依頼文をそのまま使う形にしました（英語で返事がほしいときに足す一文つき）。
+- 作者の連絡先（X: @rotejin）を、README・サポート・セキュリティポリシー・Issue の案内に足しました。
+- README に、日本語名が「隅っこキャラ」であることを書き足しました。
+
+### English
+
+- Recommended model: GPT-6.2 Sol (reasoning effort: high).
+- Added how to polish a character with pinpoint follow-up requests (how the eyes close, hand motion, seams between parts), with example requests.
+- The English guide now uses the tested Japanese prompt as it is, with one line to add for replies in English.
+- Added the author's contact (X: @rotejin) to the READMEs, the support and security policies and the issue chooser.
+- The READMEs now explain that the Japanese name is 隅っこキャラ.
+
 ## [0.1.0] - 2026-11-18
 
 最初の公開版です。 / First public release.
@@ -38,4 +56,5 @@ All notable changes to this project are recorded here.
 - English versions of the README and the guides; asset license, security policy, support and contributing guides, issue and pull request templates.
 - 298 regression checks (`verify.ps1`) and CI on GitHub Actions.
 
+[0.1.1]: https://github.com/rotejin/sumikko-mascot/releases/tag/v0.1.1
 [0.1.0]: https://github.com/rotejin/sumikko-mascot/releases/tag/v0.1.0

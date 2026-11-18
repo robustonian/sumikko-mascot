@@ -38,7 +38,7 @@ To make your own character you also need:
 1. **Download**
    Use **Code → Download ZIP** on this page and extract it, or `git clone` the repository.
 2. **Give the AI your picture and the prompt**
-   Open this folder in Codex (ChatGPT desktop app or Codex CLI). Attach a picture of the character you want, paste the text from the [character creation prompt](docs/en/character-creation-prompt.md) and send it. The only thing to change is the character name.
+   Open this folder in Codex (ChatGPT desktop app or Codex CLI). Attach a picture of the character you want, paste the Japanese prompt as it is and send it (the [character creation prompt](docs/en/character-creation-prompt.md) page shows how, and the one line to add if you want replies in English). The only thing to change is the character name.
 3. **Approve one picture**
    The AI shows you one key illustration of your character as a chibi sitting at a desk with a keyboard and a mouse, and asks whether it looks right. Reply OK if you like it. The AI then generates the parts, measures their positions, adds the character to the app and checks the motion on its own.
 
